@@ -1,9 +1,11 @@
 import 'package:chatify_app/pages/profile_page.dart';
 import 'package:chatify_app/pages/recent_conversations_page.dart';
 import 'package:chatify_app/pages/search_page.dart';
+import 'package:chatify_app/providers/theme_provider.dart';
 //import 'package:chatify_app/providers/auth_provider.dart';
 //import 'package:chatify_app/services/navigation_service.dart';
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 // import 'package:provider/provider.dart';
 
 class HomePage extends StatefulWidget {
@@ -14,10 +16,12 @@ class HomePage extends StatefulWidget {
   }
 }
 
-class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   // AuthProvider? _auth;
   TabController? _tabController;
   double? _height, _width;
+  
 
   // _HomePageState(){
   //   _tabController = TabController(length: 1, vsync: this, initialIndex: 0);
@@ -36,6 +40,8 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
 
   @override
   Widget build(BuildContext context) {
+    final themeProvider = Provider.of<ThemeProvider>(context);
+    final isDark = themeProvider.isDark;
     _height = MediaQuery.of(context).size.height;
     _width = MediaQuery.of(context).size.width;
     return Scaffold(
@@ -47,16 +53,25 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           ),
         ),
         centerTitle: true,
+        actions: [
+          IconButton(
+            onPressed: () {
+              themeProvider.toggleMode(isDark);
+            },
+            icon: Icon(
+              isDark ? Icons.sunny : Icons.nightlight_round_outlined,
+            ),
+          ),
+        ],
         bottom: TabBar(
-          unselectedLabelColor: Colors.grey,
-          //indicatorColor: Colors.blue,
-          //labelColor: Colors.blue,
+          unselectedLabelColor: Theme.of(context).tabBarTheme.unselectedLabelColor,
+          //indicatorColor: Theme.of(context).tabBarTheme.labelColor,
           controller: _tabController,
           tabs: const [
             Tab(
               icon: Icon(
                 Icons.people_outline,
-                size: 25,
+                size: 25,  
               ),
             ),
             Tab(
@@ -74,16 +89,15 @@ class _HomePageState extends State<HomePage> with SingleTickerProviderStateMixin
           ],
         ),
       ),
-      body:  _tabBarPage(),
+      body: _tabBarPage(),
     );
   }
 
-  Widget _tabBarPage(){
-    return TabBarView(controller: _tabController ,children: <Widget>[
+  Widget _tabBarPage() {
+    return TabBarView(controller: _tabController, children: <Widget>[
       SearchPage(_height!, _width!),
       RecentConversationsPage(_height!, _width!),
       ProfilePage(_height!, _width!),
     ]);
   }
-  
 }

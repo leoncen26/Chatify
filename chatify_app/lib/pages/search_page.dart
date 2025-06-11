@@ -58,7 +58,7 @@ class _SearchPageState extends State<SearchPage> {
       width: widget.width,
       child: TextField(
         autocorrect: false,
-        style: TextStyle(color: Colors.white),
+        style: TextStyle(color: Theme.of(context).textTheme.bodyMedium?.color),
         onSubmitted: (_input) {
           setState(() {
             _searchText = _input;
@@ -67,11 +67,11 @@ class _SearchPageState extends State<SearchPage> {
         decoration: InputDecoration(
           prefixIcon: Icon(
             Icons.search,
-            color: Colors.white,
+            color: Theme.of(context).textTheme.bodyMedium?.color,
           ),
           labelText: 'Search',
           labelStyle: TextStyle(
-            color: Colors.white,
+            color: Theme.of(context).textTheme.bodyMedium?.color,
           ),
           border: OutlineInputBorder(
             borderSide: BorderSide.none,

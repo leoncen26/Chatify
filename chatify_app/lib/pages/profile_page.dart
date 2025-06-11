@@ -89,7 +89,7 @@ class ProfilePage extends StatelessWidget {
       child: Text(
         _userName,
         textAlign: TextAlign.center,
-        style: TextStyle(color: Colors.white, fontSize: 30),
+        style: TextStyle(fontSize: 30),
       ),
     );
   }
