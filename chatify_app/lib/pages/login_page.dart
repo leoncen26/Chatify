@@ -30,8 +30,6 @@ class _loginPageState extends State<LoginPage> {
   //   _formKey = GlobalKey<FormState>();
   // }
 
-
-
   @override
   Widget build(BuildContext context) {
     _deviceHeight = MediaQuery.of(context).size.height;
@@ -118,24 +116,28 @@ class _loginPageState extends State<LoginPage> {
   Widget _emailTextField() {
     return TextFormField(
       autocorrect: false,
-      style: TextStyle(color: Colors.white),
-      validator: (_input) {
+      //style: TextStyle(color: Colors.white),
+      validator: (input) {
         // return _input!.isEmpty && _input.contains("@") ? null : "Please enter a valid Email";
-        if (_input!.isNotEmpty && _input.contains("@")) {
+        if (input!.isNotEmpty && input.contains("@")) {
           return null;
         }
         return "Please enter a valid email";
       },
-      onSaved: (_input) {
+      onSaved: (input) {
         setState(() {
-          _email = _input!;
+          _email = input!;
         });
       },
-      cursorColor: Colors.white,
-      decoration: const InputDecoration(
-          hintText: "Email Address",
-          focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.white))),
+      //cursorColor: Colors.white,
+      decoration: InputDecoration(
+        hintText: "Email Address",
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+            color: Theme.of(context).textTheme.bodyMedium?.color ?? Colors.black,
+          ),
+        ),
+      ),
     );
   }
 
@@ -143,37 +145,41 @@ class _loginPageState extends State<LoginPage> {
     return TextFormField(
       autocorrect: false,
       obscureText: _obscureText,
-      style: const TextStyle(color: Colors.white),
-      validator: (_input) {
-        if (_input!.isEmpty) {
+      //style: const TextStyle(color: Colors.white),
+      validator: (input) {
+        if (input!.isEmpty) {
           return "Please enter a password";
         }
         return null;
       },
-      onSaved: (_input) {
+      onSaved: (input) {
         setState(() {
-          _password = _input!;
+          _password = input!;
         });
       },
-      cursorColor: Colors.white,
+      //cursorColor: Colors.white,
       decoration: InputDecoration(
-          hintText: "password",
-          suffixIcon: IconButton(
-            onPressed: () {
-              setState(() {
-                _obscureText = !_obscureText;
-              });
-            },
-            icon: Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
+        hintText: "password",
+        suffixIcon: IconButton(
+          onPressed: () {
+            setState(() {
+              _obscureText = !_obscureText;
+            });
+          },
+          icon: Icon(_obscureText ? Icons.visibility : Icons.visibility_off),
+        ),
+        focusedBorder: UnderlineInputBorder(
+          borderSide: BorderSide(
+              color: Theme.of(context).textTheme.bodyMedium?.color ?? Colors.black,
           ),
-          focusedBorder: UnderlineInputBorder(
-              borderSide: BorderSide(color: Colors.white))),
+        ),
+      ),
     );
   }
 
   Widget _loginButton() {
     return _auth!.status == AuthStatus.Authenticating
-        ? Align(
+        ? const Align(
             alignment: Alignment.center,
             child: CircularProgressIndicator(),
           )
@@ -194,7 +200,7 @@ class _loginPageState extends State<LoginPage> {
                 }
               },
               color: Colors.blue,
-              child: Text(
+              child: const Text(
                 "Login",
                 style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
               ),
@@ -205,12 +211,12 @@ class _loginPageState extends State<LoginPage> {
   Widget _registerButton() {
     return GestureDetector(
       onTap: () {
-       NavigationService.instance.navigateTo('register');
+        NavigationService.instance.navigateTo('register');
       },
       child: Container(
         height: _deviceHeight * 0.06,
         width: _deviceWidth,
-        child: Text(
+        child: const Text(
           "Register",
           textAlign: TextAlign.center,
           style: TextStyle(fontSize: 18, fontWeight: FontWeight.w700),
