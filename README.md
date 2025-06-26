@@ -5,16 +5,16 @@ Aplikasi ini memanfaat fitur dari Firebase seperti cloud function untuk membuat 
 Aplikasi ini dibuat melalui tutorial yang ada pada course udemy yang berjudul "Build A Chat Application With Firebase, Flutter and Provider" dari Hussain Mustafa
 
 🚀 Fitur Utama
-🔐 Autentikasi Firebase (Login/Register dengan Email)
-👤 Profil pengguna (nama & foto profil)
-💬 Pesan teks & gambar (upload gambar ke Firebase Storage)
-📌 Daftar percakapan terakhir (Recent chats)
-🌙 Tampilan UI modern dan responsif
-📱 Realtime update dengan Firestore Snapshot Listener
-💡 Cloud Functions untuk pembaruan otomatis metadata percakapan
+- 🔐 Autentikasi Firebase (Login/Register dengan Email)
+- 👤 Profil pengguna (nama & foto profil)
+- 💬 Pesan teks & gambar (upload gambar ke Firebase Storage)
+- 📌 Daftar percakapan terakhir (Recent chats)
+- 🧩 Tampilan UI modern dan responsif
+- 📱 Realtime update dengan Firestore Snapshot Listener
+- 💡 Cloud Functions untuk pembaruan otomatis metadata percakapan
 
 Fitur Tambahan (Fitur yang ditambah sendiri)
-🌙 Dark Mode Toggle: Pengguna dapat mengganti tampilan aplikasi antara mode terang (light mode) dan gelap (dark mode) sesuai preferensi
+- 🌙 Dark Mode Toggle: Pengguna dapat mengganti tampilan aplikasi antara mode terang (light mode) dan gelap (dark mode) sesuai preferensi
 
 
 ## Homepage 
